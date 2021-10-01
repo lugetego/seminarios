@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Seminario index{% endblock %}
+
+{% block body %}
+    <h1>Seminario index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Lugar</th>
+                <th>Hora</th>
+                <th>Estatus</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for seminario in seminarios %}
+            <tr>
+                <td>{{ seminario.id }}</td>
+                <td>{{ seminario.nombre }}</td>
+                <td>{{ seminario.lugar }}</td>
+                <td>{{ seminario.hora ? seminario.hora|date('H:i:s') : '' }}</td>
+                <td>{{ seminario.estatus ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('seminario_show', {'id': seminario.id}) }}">show</a>
+                    <a href="{{ path('seminario_edit', {'id': seminario.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('seminario_new') }}">Create new</a>
+{% endblock %}

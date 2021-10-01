@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Seminario{% endblock %}
+
+{% block body %}
+    <h1>Seminario</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ seminario.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ seminario.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Lugar</th>
+                <td>{{ seminario.lugar }}</td>
+            </tr>
+            <tr>
+                <th>Hora</th>
+                <td>{{ seminario.hora ? seminario.hora|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Estatus</th>
+                <td>{{ seminario.estatus ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('seminario_index') }}">back to list</a>
+
+    <a href="{{ path('seminario_edit', {'id': seminario.id}) }}">edit</a>
+
+    {{ include('seminario/_delete_form.html.twig') }}
+{% endblock %}
