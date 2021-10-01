@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Seminario index{% endblock %}
+{% block title %}Seminario{% endblock %}
+
+ {% block stylesheets %}
+     {{ parent() }}
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+ {% endblock %}
 
 {% block body %}
-    <h1>Seminario index</h1>
+    <h1>Seminario</h1>
 
-    <table class="table">
+    <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>Id</th>
@@ -38,4 +44,19 @@
     </table>
 
     <a href="{{ path('seminario_new') }}">Create new</a>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+
+    <script type="application/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable();
+    } );
+    </script>
+
 {% endblock %}
