@@ -25,7 +25,7 @@
         <tbody>
         {% for seminario in seminarios %}
             <tr>
-                <td>{{ seminario.id }}</td>
+                <td>{{ seminario.slug }}</td>
                 <td>{{ seminario.nombre }}</td>
                 <td>{{ seminario.lugar }}</td>
                 <td>{{ seminario.hora ? seminario.hora|date('H:i:s') : '' }}</td>

@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ResponsableRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * @ORM\Entity(repositoryClass=ResponsableRepository::class)
  */
@@ -36,6 +36,29 @@ class Responsable
      * @ORM\Column(type="string", length=255)
      */
     private $institucion;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"apellidos","nombre"})
+     */
+    private $slug;
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug): void
+    {
+        $this->slug = $slug;
+    }
+
 
     public function getId(): ?int
     {

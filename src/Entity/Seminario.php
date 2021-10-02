@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SeminarioRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=SeminarioRepository::class)
@@ -36,6 +37,28 @@ class Seminario
      * @ORM\Column(type="boolean")
      */
     private $estatus;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"nombre"})
+     */
+    private $slug;
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug): void
+    {
+        $this->slug = $slug;
+    }
 
     public function getId(): ?int
     {
