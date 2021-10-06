@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ResponsableRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 /**
@@ -42,6 +44,16 @@ class Responsable
      * @Gedmo\Slug(fields={"apellidos","nombre"})
      */
     private $slug;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Seminario::class, mappedBy="responsables")
+     */
+    private $seminarios;
+
+    public function __construct()
+    {
+        $this->seminarios = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -111,5 +123,35 @@ class Responsable
         $this->institucion = $institucion;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Seminario[]
+     */
+    public function getSeminarios(): Collection
+    {
+        return $this->seminarios;
+    }
+
+    public function addSeminario(Seminario $seminario): self
+    {
+        if (!$this->seminarios->contains($seminario)) {
+            $this->seminarios[] = $seminario;
+        }
+
+        return $this;
+    }
+
+    public function removeSeminario(Seminario $seminario): self
+    {
+        $this->seminarios->removeElement($seminario);
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNombre().' '.$this->getApellidos();
+
     }
 }

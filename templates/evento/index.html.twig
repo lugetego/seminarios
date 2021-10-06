@@ -28,7 +28,7 @@
         <tbody>
         {% for evento in eventos %}
             <tr>
-                <td>{{ evento.slug }}</td>
+                <td>{{ evento.id }}</td>
                 <td>{{ evento.lugar }}</td>
                 <td>{{ evento.responsables }}</td>
                 <td>{{ evento.fecha ? evento.fecha|date('Y-m-d') : '' }}</td>

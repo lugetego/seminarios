@@ -1,11 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Seminario{% endblock %}
+{% block title %}Datos Seminario{% endblock %}
+
+{% block stylesheets%}
+    {{ parent() }}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Seminario</h1>
-
+    <h1>Datos de seminario</h1>
     {{ include('seminario/_form.html.twig') }}
-
     <a href="{{ path('seminario_index') }}">back to list</a>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="javascript">
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
 {% endblock %}

@@ -1,4 +1,20 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+
+
+<form>
+    <div class="form-row">
+        <div class="col-4">
+            <div class="form-floating mb-3">
+                {{ form_widget(form.lugar,{
+                    'attr': {'class': 'form-control', 'placeholder':'Lugar',
+                    } } ) }}
+                <label for="Lugar">{{ form_label(form.lugar) }}</label>
+                <div>{{ form_errors(form.lugar) }}</div>
+            </div>
+        </div>
+    </div>
+</form>
+{{ form_widget(form) }}
+<button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

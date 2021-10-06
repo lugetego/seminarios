@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SeminarioRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -43,6 +45,22 @@ class Seminario
      * @Gedmo\Slug(fields={"nombre"})
      */
     private $slug;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Responsable::class, inversedBy="seminarios")
+     */
+    private $responsables;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Evento::class, mappedBy="seminario")
+     */
+    private $eventos;
+
+    public function __construct()
+    {
+        $this->responsables = new ArrayCollection();
+        $this->eventos = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -112,4 +130,69 @@ class Seminario
 
         return $this;
     }
+
+    /**
+     * @return Collection|Responsable[]
+     */
+    public function getResponsables(): Collection
+    {
+        return $this->responsables;
+    }
+
+    public function addResponsable(Responsable $responsable): self
+    {
+        if (!$this->responsables->contains($responsable)) {
+            $this->responsables[] = $responsable;
+            $responsable->addResponsable($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResponsable(Responsable $responsable): self
+    {
+        if ($this->responsables->removeElement($responsable)) {
+            $responsable->removeResponsable($this);
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
+
+    /**
+     * @return Collection|Evento[]
+     */
+    public function getEventos(): Collection
+    {
+        return $this->eventos;
+    }
+
+    public function addEvento(Evento $evento): self
+    {
+        if (!$this->eventos->contains($evento)) {
+            $this->eventos[] = $evento;
+            $evento->setSeminario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvento(Evento $evento): self
+    {
+        if ($this->eventos->removeElement($evento)) {
+            // set the owning side to null (unless already changed)
+            if ($evento->getSeminario() === $this) {
+                $evento->setSeminario(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
 }

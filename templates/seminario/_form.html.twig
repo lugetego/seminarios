@@ -1,4 +1,54 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+<form>
+    <div class="form-row">
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.nombre,{
+                        'attr': {'class': 'form-control', 'placeholder':'Nombre',
+                        } } ) }}
+                    <label for="Lugar">{{ form_label(form.nombre) }}</label>
+                    <div>{{ form_errors(form.nombre) }}</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.lugar,{
+                        'attr': {'class': 'form-control', 'placeholder':'Lugar',
+                        } } ) }}
+                    <label for="Lugar">{{ form_label(form.lugar) }}</label>
+                    <div>{{ form_errors(form.lugar) }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <div class="form-check form-switch">
+                        {{ form_widget(form.estatus,{
+                            'attr': {'class': 'form-check-input', 'placeholder':'Activo',
+                                'id': 'lexSwitchCheckChecked'
+                            } } ) }}
+                        <label class="form-check-label" for="flexSwitchCheckChecked">{{ form_label(form.estatus) }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class=" mb-3">
+                    <label class="form-check-label" for="flexSwitchCheckChecked">{{ form_label(form.responsables) }}</label>
+                    {{ form_widget(form.responsables,{
+                        'attr': {'class': 'form-control js-example-basic-multiple', 'placeholder':'Responsables',
+                        } } ) }}
+                </div>
+            </div>
+        </div>
+
+
+        {{ form_widget(form) }}
+
+
+    </div>
+</form>
+<button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

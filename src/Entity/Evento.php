@@ -62,6 +62,11 @@ class Evento
      */
     private $comentario;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Seminario::class, inversedBy="eventos")
+     */
+    private $seminario;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -171,6 +176,18 @@ class Evento
     public function setComentario(string $comentario): self
     {
         $this->comentario = $comentario;
+
+        return $this;
+    }
+
+    public function getSeminario(): ?Seminario
+    {
+        return $this->seminario;
+    }
+
+    public function setSeminario(?Seminario $seminario): self
+    {
+        $this->seminario = $seminario;
 
         return $this;
     }
