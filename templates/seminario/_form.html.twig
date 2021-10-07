@@ -3,7 +3,7 @@
 <form>
     <div class="form-row">
         <div class="row">
-            <div class="col">
+            <div class="col-4">
                 <div class="form-floating mb-3">
                     {{ form_widget(form.nombre,{
                         'attr': {'class': 'form-control', 'placeholder':'Nombre',
@@ -12,7 +12,7 @@
                     <div>{{ form_errors(form.nombre) }}</div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <div class="form-floating mb-3">
                     {{ form_widget(form.lugar,{
                         'attr': {'class': 'form-control', 'placeholder':'Lugar',
@@ -21,9 +21,24 @@
                     <div>{{ form_errors(form.lugar) }}</div>
                 </div>
             </div>
+            <div class="col-2">
+                <div class="mb-3">
+                    {{ form_widget(form.hora,{
+                        'attr': {'id':'floatingSelect','class': 'form-select form-select-lg'
+                        } } ) }}
+                </div>
+            </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-8">
+                <label class="form-check-label" for="floatingSelect">{{ form_label(form.responsables) }}</label>
+                {{ form_widget(form.responsables,{
+                    'attr': {'id':'floatingSelect','class': 'js-example-basic-multiple form-select form-select-lg '
+                    } } ) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mt-3">
                 <div class="form-floating mb-3">
                     <div class="form-check form-switch">
                         {{ form_widget(form.estatus,{
@@ -34,21 +49,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class=" mb-3">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">{{ form_label(form.responsables) }}</label>
-                    {{ form_widget(form.responsables,{
-                        'attr': {'class': 'form-control js-example-basic-multiple', 'placeholder':'Responsables',
-                        } } ) }}
-                </div>
-            </div>
         </div>
-
-
         {{ form_widget(form) }}
-
-
     </div>
 </form>
+
 <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
