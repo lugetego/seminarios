@@ -9,7 +9,7 @@
  {% endblock %}
 
 {% block body %}
-    <h1>Seminario</h1>
+    <h3 class="mb-3">Seminarios CCM</h3>
 
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
@@ -28,11 +28,11 @@
                 <td>{{ seminario.slug }}</td>
                 <td>{{ seminario.nombre }}</td>
                 <td>{{ seminario.lugar }}</td>
-                <td>{{ seminario.hora ? seminario.hora|date('H:i:s') : '' }}</td>
-                <td>{{ seminario.estatus ? 'Yes' : 'No' }}</td>
+                <td>{{ seminario.hora ? seminario.hora|date('H:i') : '' }}</td>
+                <td>{{ seminario.estatus ? 'Activo' : 'Inactivo' }}</td>
                 <td>
-                    <a href="{{ path('seminario_show', {'id': seminario.id}) }}">show</a>
-                    <a href="{{ path('seminario_edit', {'id': seminario.id}) }}">edit</a>
+                    <a href="{{ path('seminario_show', {'id': seminario.id}) }}"> <i class="bi bi-search"></i></a>
+                    <a href="{{ path('seminario_edit', {'id': seminario.id}) }}"> <i class="bi bi-pencil"></i></a>
                 </td>
             </tr>
         {% else %}
