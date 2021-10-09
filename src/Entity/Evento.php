@@ -64,8 +64,10 @@ class Evento
 
     /**
      * @ORM\ManyToOne(targetEntity=Seminario::class, inversedBy="eventos")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $seminario;
+
 
     public function getId(): ?int
     {
@@ -191,4 +193,5 @@ class Evento
 
         return $this;
     }
+
 }

@@ -56,6 +56,7 @@ class Seminario
      */
     private $eventos;
 
+
     public function __construct()
     {
         $this->responsables = new ArrayCollection();
@@ -192,6 +193,7 @@ class Seminario
 
         return $this;
     }
+
 
 
 
