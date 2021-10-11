@@ -7,7 +7,7 @@
      <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
  {% endblock %}
 {% block body %}
-    <h1>Responsable index</h1>
+    <h3>Responsables</h3>
 
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
@@ -16,7 +16,7 @@
                 <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Email</th>
-                <th>Institucion</th>
+                <th>Institución</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -29,8 +29,8 @@
                 <td>{{ responsable.email }}</td>
                 <td>{{ responsable.institucion }}</td>
                 <td>
-                    <a href="{{ path('responsable_show', {'id': responsable.id}) }}">show</a>
-                    <a href="{{ path('responsable_edit', {'id': responsable.id}) }}">edit</a>
+                    <a href="{{ path('responsable_show', {'id': responsable.id}) }}"><i class="bi bi-search"></i></a>
+                    <a href="{{ path('responsable_edit', {'id': responsable.id}) }}"><i class="bi bi-pencil"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -41,7 +41,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('responsable_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('responsable_new') }}"><i class="bi bi-plus-circle"></i> Nuevo</a>
 {% endblock %}
 {% block javascripts %}
 

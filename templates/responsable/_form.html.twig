@@ -1,4 +1,47 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="form-row">
+    <div class="row">
+        <div class="col-4">
+            <div class="form-floating mb-3">
+                {{ form_widget(form.nombre,{
+                    'attr': {'class': 'form-control', 'placeholder':'Nombre',
+                    } } ) }}
+                <label for="nombre">{{ form_label(form.nombre) }}</label>
+                <div>{{ form_errors(form.nombre) }}</div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-floating mb-3">
+                {{ form_widget(form.apellidos,{
+                    'attr': {'class': 'form-control', 'placeholder':'Apellidos',
+                    } } ) }}
+                <label for="apellidos">{{ form_label(form.apellidos) }}</label>
+                <div>{{ form_errors(form.apellidos) }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="form-floating mb-3">
+                {{ form_widget(form.email,{
+                    'attr': {'class': 'form-control', 'placeholder':'Correo',
+                    } } ) }}
+                <label for="correo">{{ form_label(form.email) }}</label>
+                <div>{{ form_errors(form.email) }}</div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-floating mb-3">
+                {{ form_widget(form.institucion,{
+                    'attr': {'class': 'form-control', 'placeholder':'Institución',
+                    } } ) }}
+                <label for="insititucion">{{ form_label(form.institucion) }}</label>
+                <div>{{ form_errors(form.institucion) }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_widget(form) }}
+<button class="btn btn-primary">{{ button_label|default('Guardar') }}</button>
+
 {{ form_end(form) }}

@@ -16,7 +16,7 @@ class EventoType extends AbstractType
         $builder
             ->add('lugar')
             ->add('seminario',null, [
-                'placeholder' => 'Seleccionar   ',
+                'placeholder' => 'Seleccionar',
             ])
             ->add('fecha',DateTimeType::class, array(
                 'required' => true,
