@@ -48,19 +48,14 @@ class Seminario
 
     /**
      * @ORM\ManyToMany(targetEntity=Responsable::class, inversedBy="seminarios")
+     * @ORM\JoinTable(name="seminario_responsable")
      */
     private $responsables;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Evento::class, mappedBy="seminario")
-     */
-    private $eventos;
 
 
     public function __construct()
     {
         $this->responsables = new ArrayCollection();
-        $this->eventos = new ArrayCollection();
     }
 
     /**
@@ -165,36 +160,19 @@ class Seminario
     }
 
     /**
-     * @return Collection|Evento[]
+     * Get responsablesStr
+     *
+     * @return string
      */
-    public function getEventos(): Collection
+    public function getResponsablesStr()
     {
-        return $this->eventos;
-    }
-
-    public function addEvento(Evento $evento): self
-    {
-        if (!$this->eventos->contains($evento)) {
-            $this->eventos[] = $evento;
-            $evento->setSeminario($this);
+        $listaResp= "";
+        foreach($this->responsables as $resp){
+            $listaResp .= $resp->getNombre() . ' ' . $resp->getApellidos() . ', ';
         }
-
-        return $this;
+        // Borra la última coma
+        if(strlen($listaResp))
+            $listaResp = substr($listaResp, 0, -2);
+        return $listaResp;
     }
-
-    public function removeEvento(Evento $evento): self
-    {
-        if ($this->eventos->removeElement($evento)) {
-            // set the owning side to null (unless already changed)
-            if ($evento->getSeminario() === $this) {
-                $evento->setSeminario(null);
-            }
-        }
-
-        return $this;
-    }
-
-
-
-
 }

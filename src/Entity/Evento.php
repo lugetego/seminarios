@@ -64,7 +64,7 @@ class Evento
 
     /**
      * @ORM\ManyToOne(targetEntity=Seminario::class, inversedBy="eventos")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="seminario_id", referencedColumnName="id")
      */
     private $seminario;
 
