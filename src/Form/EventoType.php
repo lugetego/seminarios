@@ -15,6 +15,7 @@ class EventoType extends AbstractType
     {
         $builder
             ->add('lugar')
+            ->add('emails')
             ->add('seminario',null, [
                 'placeholder' => 'Seleccionar',
             ])

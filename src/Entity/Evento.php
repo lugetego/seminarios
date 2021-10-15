@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EventoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=EventoRepository::class)
@@ -26,6 +27,11 @@ class Evento
      * @ORM\Column(type="string", length=255)
      */
     private $responsables;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $emails;
 
     /**
      * @ORM\Column(type="date")
@@ -58,16 +64,21 @@ class Evento
     private $resumen;
 
     /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"platica"})
+     */
+    private $slug;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $comentario;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Seminario::class, inversedBy="eventos")
+     * @ORM\ManyToOne(targetEntity=Seminario::class)
      * @ORM\JoinColumn(name="seminario_id", referencedColumnName="id")
      */
     private $seminario;
-
 
     public function getId(): ?int
     {
@@ -94,6 +105,18 @@ class Evento
     public function setResponsables(string $responsables): self
     {
         $this->responsables = $responsables;
+
+        return $this;
+    }
+
+    public function getEmails(): ?string
+    {
+        return $this->emails;
+    }
+
+    public function setEmails(string $emails): self
+    {
+        $this->emails = $emails;
 
         return $this;
     }
@@ -182,6 +205,22 @@ class Evento
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug): void
+    {
+        $this->slug = $slug;
+    }
+
     public function getSeminario(): ?Seminario
     {
         return $this->seminario;
@@ -193,5 +232,4 @@ class Evento
 
         return $this;
     }
-
 }

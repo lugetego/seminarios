@@ -71,7 +71,6 @@ class Responsable
         $this->slug = $slug;
     }
 
-
     public function getId(): ?int
     {
         return $this->id;
