@@ -72,6 +72,7 @@ class ResponsableController extends AbstractController
             return $this->redirectToRoute('responsable_index', [], Response::HTTP_SEE_OTHER);
         }
 
+
         return $this->render('responsable/edit.html.twig', [
             'responsable' => $responsable,
             'form' => $form->createView(),
