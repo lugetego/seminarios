@@ -23,13 +23,48 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script>
+       $(document).ready(function() {
+           let seminario = document.querySelector('.js-evento-seminario');
+           console.log(seminario);
 
-        const seminario = document.querySelector('.js-evento-seminario');
-       seminario.addEventListener('change', (event) => {
-           console.log(`Selected ${event.target.value}`);
+           seminario.addEventListener('change', (event) => {
+               console.dir(event.target);
+
+               if (event.target.value) {
+                   $.ajax({
+                       url: `/api/seminarios/${event.target.value}.json`,
+                       method: 'GET',
+                       success: function (json) {
+                           // let s = JSON.parse('{"name":"John", "age":30, "city":"New York"}');
+
+                           console.log(json.lugar, json.correosStr, json.responsablesStr);
+                           console.dir(json.hora);
+
+                           // hora: "1970-01-01T13:00:00+00:00"  no GTM INFO
+                           let d = new Date(json.hora);
+                           console.log(d.toString());
+
+                           // $('.js-evento-lugar').val(s.city);
+                           $('.js-evento-lugar').val(json.lugar);
+                           // $(".js-evento-hora").val(json.hora);
+                       },
+                       statusCode: {
+                           404: function () {
+                               //Clear responsables, hora fields
+                               console.log('error')
+                           }
+                       }
+                   });
+               } else {
+                   // Clear fields responsables, hora
+                   console.log('No data');
+                   $('.js-evento-lugar').val('');
+               }
+               // console.log(`Selected ${event.target.value}`);
+           });
        });
-
     </script>
 {% endblock %}
 

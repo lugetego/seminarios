@@ -1,4 +1,7 @@
 .idea/
+.idea/php.xml
+.idea/seminarios.iml
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php

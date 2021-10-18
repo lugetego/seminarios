@@ -7,10 +7,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
+ * @ApiResource(
+ *     collectionOperations={"get", "post"},
+ *     itemOperations={"get"}
+ *     )
  * @ORM\Entity(repositoryClass=SeminarioRepository::class)
- */
+  */
 class Seminario
 {
     /**
@@ -174,5 +179,22 @@ class Seminario
         if(strlen($listaResp))
             $listaResp = substr($listaResp, 0, -2);
         return $listaResp;
+    }
+
+    /**
+     * Get correosStr
+     *
+     * @return string
+     */
+    public function getCorreosStr()
+    {
+        $listaCorreos= "";
+        foreach($this->responsables as $resp){
+            $listaCorreos .= $resp->getEmail() . ' ,';
+        }
+        // Borra la última coma
+        if(strlen($listaCorreos))
+            $listaCorreos = substr($listaCorreos, 0, -2);
+        return $listaCorreos;
     }
 }

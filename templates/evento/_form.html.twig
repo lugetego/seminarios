@@ -13,7 +13,7 @@
         <div class="col-4">
             <div class="form-floating mb-3">
                 {{ form_widget(form.lugar,{
-                    'attr': {'class': 'form-control', 'placeholder':'Lugar',
+                    'attr': {'class': 'form-control js-evento-lugar', 'placeholder':'Lugar',
                     } } ) }}
                 <label for="Lugar">{{ form_label(form.lugar) }}</label>
                 <div>{{ form_errors(form.lugar) }}</div>
@@ -22,10 +22,19 @@
         <div class="col-4">
             <div class="form-floating mb-3">
                 {{ form_widget(form.fecha,{
-                    'attr': {'class': 'form-control',
+                    'attr': {'class': 'form-control js-evento-fecha',
                     } } ) }}
-                <label for="Fecha">{{ form_label(form.fecha) }}</label>
                 <div>{{ form_errors(form.fecha) }}</div>
+                <label for="Fecha">{{ form_label(form.fecha) }}</label>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row mb-3">
+                <label for="Hora">{{ form_label(form.hora) }}</label>
+                {{ form_widget(form.hora,{
+                    'attr': {'class': 'js-evento-hora',
+                    } } ) }}
+                <div>{{ form_errors(form.hora) }}</div>
             </div>
         </div>
     </div>

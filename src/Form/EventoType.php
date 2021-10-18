@@ -6,7 +6,8 @@ use App\Entity\Evento;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 
 
 class EventoType extends AbstractType
@@ -15,20 +16,22 @@ class EventoType extends AbstractType
     {
         $builder
             ->add('lugar')
-            ->add('emails')
             ->add('seminario',null, [
                 'placeholder' => 'Seleccionar',
             ])
-            ->add('fecha',DateTimeType::class, array(
+            ->add('fecha',DateType::class, array(
                 'required' => true,
-                'label'=>'Fecha y hora',
+                'label'=>'Fecha',
                 'widget' => 'single_text',
                 'attr' => [
                     'class' => 'form-control input-inline datepicker',
                     'data-provide' => 'datepicker',
                 ],
             ))
-          //  ->add('hora')
+            ->add('hora',TimeType::class, array(
+                'required' => true,
+                'label'=>'Hora'
+            ))
             ->add('ponente')
             ->add('origen')
             ->add('platica')
