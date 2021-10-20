@@ -1,2 +1,63 @@
 @import '~bootstrap';
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css");
+
+@import url('https://fonts.googleapis.com/css2?family=Andada+Pro:wght@400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+/*font-family: 'Andada Pro', serif;*/
+/*font-family: 'Roboto', sans-serif;*/
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.h2, h2 {
+    font-family: 'Andada Pro', serif;
+}
+
+.seminar-name {
+    text-transform: uppercase;
+    color: #10617b;
+    font-weight: bold;
+    font-size: .90em;
+    line-height: 1.4em;
+    border-bottom: 1px dotted #ddd;
+}
+
+.seminar-event {
+    margin-top: 6px;
+}
+
+.seminar-title {
+    font-family: 'Andada Pro', serif;
+    color: #B4430D;
+}
+
+.seminar-title a {
+    color: #B4430D;
+}
+
+.seminar-info {
+    /*padding-left: 50px;*/
+}
+.seminario-hora {
+    padding-left: 6px;
+}
+
+.speaker {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.university {
+    font-size: 18px;
+}
+
+.month {
+    text-transform: uppercase;
+    font-size: 1.4em;
+}
+
+.day {
+    font-size: 1.6em;
+}

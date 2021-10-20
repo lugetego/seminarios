@@ -7,51 +7,72 @@
      <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
  {% endblock %}
 {% block body %}
-    <h3>Eventos CCM</h3>
 
-    <table id="example" class="table table-striped" style="width:100%">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Lugar</th>
-                <th>Responsables</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Ponente</th>
-                <th>Origen</th>
-                <th>Platica</th>
-                <th>Resumen</th>
-                <th>Comentario</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="container">
+
+        <h2 class="mb-5"><strong>Coloquio y Seminarios</strong><br>Centro de Ciencias Matemáticas</h2>
+
+        <h4 class="mb-5">Eventos de la Semana</h4>
+
+     {#   <table id="example" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Lugar</th>
+                    <th>Responsables</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Ponente</th>
+                    <th>Origen</th>
+                    <th>Platica</th>
+                    <th>Resumen</th>
+                    <th>Comentario</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>#}
         {% for evento in eventos %}
-            <tr>
+            <div class="seminar-container">
+                <div class="seminar-name">{{ evento.seminario.nombre }}</div>
+                <div class="seminar-event d-flex">
+                    <div class="date-container d-row">
+                        <span class="month d-block"> {{ evento.fecha|format_date(pattern='MMM', locale='es')|trim('.') }}</span>
+                        <span class="day">{{ evento.fecha|date('d') }}</span>
+                    </div>
+                    <div class="seminar-info d-row ps-5">
+                        <h3 class="seminar-title"><a href="{{ path('evento_show', {'slug': evento.slug}) }}">{{ evento.platica }}</a></h3>
+                        <div class="speaker d-inline">{{ evento.ponente }}</div> - <div class="university d-inline">{{ evento.origen }}</div>
+                        <div class="d-block">
+                            <div class="d-inline"><i class="bi bi-geo-alt"></i> {{ evento.lugar }}</div> - <div class="seminario-hora d-inline"><i class="bi bi-clock"></i> {{ evento.hora|date('H:i') }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          {#  <tr>
                 <td>{{ evento.id }}</td>
                 <td>{{ evento.lugar }}</td>
-                <td>{{ evento.responsables }}</td>
                 <td>{{ evento.fecha ? evento.fecha|date('Y-m-d') : '' }}</td>
                 <td>{{ evento.hora ? evento.hora|date('H:i:s') : '' }}</td>
                 <td>{{ evento.ponente }}</td>
                 <td>{{ evento.origen }}</td>
                 <td>{{ evento.platica }}</td>
-                <td>{{ evento.resumen }}</td>
-                <td>{{ evento.comentario }}</td>
                 <td>
                     <a href="{{ path('evento_show', {'id': evento.id}) }}"><i class="bi bi-search"></i></a>
                     <a href="{{ path('evento_edit', {'id': evento.id}) }}"><i class="bi bi-pencil"></i></a>
                 </td>
-            </tr>
+            </tr>#}
         {% else %}
-            <tr>
+            <div class="lead">No hay eventos en la semana</div>
+          {#  <tr>
                 <td colspan="11">no records found</td>
-            </tr>
+            </tr>#}
         {% endfor %}
-        </tbody>
-    </table>
+         {#   </tbody>
+        </table>#}
 
-    <a class="btn btn-primary" href="{{ path('evento_new') }}"><i class="bi bi-plus-circle"></i> Nuevo</a>
+    {#    <a class="btn btn-primary" href="{{ path('evento_new') }}"><i class="bi bi-plus-circle"></i> Nuevo</a>#}
+    </div>
+
 {% endblock %}
 {% block javascripts %}
 

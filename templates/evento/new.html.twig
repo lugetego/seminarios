@@ -44,11 +44,22 @@
 
                            // hora: "1970-01-01T13:00:00+00:00"  no GTM INFO
                            let d = new Date(json.hora);
-                           console.log(d.toString());
+                           let timectl = $(".js-evento-hora");
+
+                          // var utcDate = tDate.toUTCString();
+                           console.log(d.getUTCHours(), d.getUTCMinutes());
+                           console.dir(timectl);
 
                            // $('.js-evento-lugar').val(s.city);
                            $('.js-evento-lugar').val(json.lugar);
-                           // $(".js-evento-hora").val(json.hora);
+
+                           // Busca el select de la hora y minuto
+                           // id="evento_hora_hour"
+                           // id="evento_hora_minute"
+
+                           document.getElementById("evento_hora_hour").value = d.getUTCHours();
+                           document.getElementById("evento_hora_minute").value = d.getUTCMinutes();
+
                        },
                        statusCode: {
                            404: function () {

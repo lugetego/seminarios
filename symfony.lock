@@ -459,6 +459,9 @@
             "tests/bootstrap.php"
         ]
     },
+    "symfony/polyfill-intl-grapheme": {
+        "version": "v1.23.1"
+    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.23.0"
     },
@@ -541,6 +544,9 @@
     },
     "symfony/stopwatch": {
         "version": "v4.4.27"
+    },
+    "symfony/string": {
+        "version": "v5.3.7"
     },
     "symfony/translation": {
         "version": "3.3",
@@ -640,6 +646,12 @@
         "version": "1.2.1"
     },
     "twig/extra-bundle": {
+        "version": "v3.3.3"
+    },
+    "twig/intl-extra": {
+        "version": "v3.3.3"
+    },
+    "twig/string-extra": {
         "version": "v3.3.3"
     },
     "twig/twig": {
