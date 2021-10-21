@@ -19,7 +19,7 @@
                 <div>{{ form_errors(form.lugar) }}</div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-2">
             <div class="form-floating mb-3">
                 {{ form_widget(form.fecha,{
                     'attr': {'class': 'form-control',
@@ -28,8 +28,16 @@
                 <div>{{ form_errors(form.fecha) }}</div>
             </div>
         </div>
+        <div class="col-2">
+            <div class="form-floating mb-3">
+                {{ form_widget(form.hora,{
+                    'attr': {'class': 'form-control',
+                    } } ) }}
+                <label for="Fecha">{{ form_label(form.hora) }}</label>
+                <div>{{ form_errors(form.hora) }}</div>
+            </div>
+        </div>
     </div>
-
     <div class="row">
         <div class="col-4">
             <div class="form-floating mb-3">
@@ -50,7 +58,6 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-4">
             <div class="form-floating mb-3">
@@ -82,13 +89,19 @@
                 <div>{{ form_errors(form.comentario) }}</div>
             </div>
         </div>
-
     </div>
-
+    <div class="row">
+        <div class="col-8">
+            <div class="form-floating mb-3">
+                {{ form_widget(form.emails,{
+                    'attr': {'class': 'form-control',
+                    } } ) }}
+                <label for="Lugar">{{ form_label(form.emails) }}</label>
+                <div>{{ form_errors(form.emails) }}</div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-
 {{ form_widget(form) }}
 <button class="btn btn-primary">{{ button_label|default('Guardar') }}</button>
 {{ form_end(form) }}

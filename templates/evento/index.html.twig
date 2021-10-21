@@ -36,7 +36,7 @@
                 <td>{{ evento.ponente }}</td>
                 <td>{{ evento.origen }}</td>
                 <td>{{ evento.platica }}</td>
-                <td>{{ evento.resumen }}</td>
+                <td>{{ evento.resumen| u.truncate(8) }}</td>
                 <td>{{ evento.comentario }}</td>
                 <td>
                     <a href="{{ path('evento_show', {'id': evento.id}) }}"><i class="bi bi-search"></i></a>
