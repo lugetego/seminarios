@@ -37,7 +37,6 @@ class EventoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $evento->setResponsables($evento->getSeminario()->getResponsablesStr());
-            $evento->setHora($evento->getFecha());
             $entityManager->persist($evento);
             $entityManager->flush();
 
@@ -66,6 +65,7 @@ class EventoController extends AbstractController
     public function edit(Request $request, Evento $evento): Response
     {
         $form = $this->createForm(EventoType::class, $evento);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

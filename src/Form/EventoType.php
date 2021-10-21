@@ -16,6 +16,10 @@ class EventoType extends AbstractType
     {
         $builder
             ->add('lugar')
+            ->add('emails',null, array(
+                'label'=>'Correos',
+            ))
+
             ->add('seminario',null, [
                 'placeholder' => 'Seleccionar',
             ])
@@ -30,11 +34,18 @@ class EventoType extends AbstractType
             ))
             ->add('hora',TimeType::class, array(
                 'required' => true,
-                'label'=>'Hora'
+                'label'=>'Hora',
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control input-inline datepicker',
+                    'data-provide' => 'datepicker',
+                ],
             ))
             ->add('ponente')
             ->add('origen')
-            ->add('platica')
+            ->add('platica',null, array(
+                'label'=>'Plática',
+                ))
             ->add('resumen')
             ->add('comentario')
         ;
