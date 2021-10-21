@@ -50,7 +50,7 @@ class EventoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="evento_show", methods={"GET"})
+     * @Route("/{slug}", name="evento_show", methods={"GET"})
      */
     public function show(Evento $evento): Response
     {
