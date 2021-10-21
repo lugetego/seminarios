@@ -16,16 +16,17 @@
             <div class="seminar-name">{{ evento.seminario.nombre }}</div>
             <div class="seminar-event d-flex">
                 <div class="seminar-info d-row">
-                    <h3 class="seminar-title mt-3"><a href="{{ path('evento_show', {'slug': evento.slug}) }}">{{ evento.platica }}</a></h3>
+                    <h3 class="seminar-title mt-3">{{ evento.platica }}</h3>
                     <div class="speaker d-inline">{{ evento.ponente }}</div> - <div class="university d-inline">{{ evento.origen }}</div>
                     <hr>
                     <div class="d-inline mt-3"><i class="bi bi-geo-alt"></i> {{ evento.lugar }}</div>
                     <div class="d-block mt-2">
-                        <div class="evento-calendar d-inline"><i class="bi bi-calendar"></i>  {{ evento.fecha|format_date('long', locale='es') }}</div> - <div class="seminario-hora d-inline"><i class="bi bi-clock"></i> {{ evento.hora|date('H:i') }}</div>
+                        <div class="evento-calendar d-inline"><i class="bi bi-calendar"></i>  {{ evento.fecha|localizeddate('long', 'none', 'es-MX') }}</div> - <div class="seminario-hora d-inline"><i class="bi bi-clock"></i> {{ evento.hora|date('H:i') }}</div>
                     </div>
-{#                    {{ 'Symfony String + Twig = <3'|u.wordwrap(5) }}#}
-                    <div class="abstract mt-3">
-                            {{ evento.resumen }}
+                    <div class="row abstract mt-3">
+                        <div class="col-lg-8">
+                            {{ evento.resumen|wordwrap(70) }}
+                        </div>
                     </div>
                     <div class="comment">
                         {{ evento.comentario }}
@@ -34,6 +35,9 @@
             </div>
         </div>
 
+    <section id="footer">
+
+    </section>
 
 {#    <table class="table">#}
 {#        <tbody>#}

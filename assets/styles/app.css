@@ -25,7 +25,7 @@ body {
 }
 
 .seminar-event {
-    margin-top: 6px;
+    margin-top: 15px;
 }
 
 .seminar-title {
@@ -60,4 +60,29 @@ body {
 
 .day {
     font-size: 1.6em;
+}
+
+.abstract {
+    color: #666666;
+}
+
+.date-container {
+    border-style: solid;
+    border-color: #cccccc;
+    border-radius: 10px;
+    border-width: 1px;
+    padding: 8px;
+}
+
+.evento-calendar {
+    font-weight: bold;
+    color: #10617b;
+}
+
+.text-dark {
+    color: #10617b;
+}
+
+#footer {
+    min-height: 300px;
 }
