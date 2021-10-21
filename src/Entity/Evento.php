@@ -60,7 +60,7 @@ class Evento
     private $platica;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $resumen;
 
@@ -71,7 +71,7 @@ class Evento
     private $slug;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $comentario;
 

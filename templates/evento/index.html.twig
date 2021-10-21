@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Eventos CCM{% endblock %}
- {% block stylesheets %}
+{% block stylesheets %}
      {{ parent() }}
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
      <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
- {% endblock %}
+{% endblock %}
 {% block body %}
 
     <div class="container">
@@ -14,23 +14,6 @@
 
         <h4 class="mb-5">Eventos de la Semana</h4>
 
-     {#   <table id="example" class="table table-striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Lugar</th>
-                    <th>Responsables</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Ponente</th>
-                    <th>Origen</th>
-                    <th>Platica</th>
-                    <th>Resumen</th>
-                    <th>Comentario</th>
-                    <th>actions</th>
-                </tr>
-            </thead>
-            <tbody>#}
         {% for evento in eventos %}
             <div class="seminar-container">
                 <div class="seminar-name">{{ evento.seminario.nombre }}</div>
@@ -48,29 +31,9 @@
                     </div>
                 </div>
             </div>
-          {#  <tr>
-                <td>{{ evento.id }}</td>
-                <td>{{ evento.lugar }}</td>
-                <td>{{ evento.fecha ? evento.fecha|date('Y-m-d') : '' }}</td>
-                <td>{{ evento.hora ? evento.hora|date('H:i:s') : '' }}</td>
-                <td>{{ evento.ponente }}</td>
-                <td>{{ evento.origen }}</td>
-                <td>{{ evento.platica }}</td>
-                <td>
-                    <a href="{{ path('evento_show', {'id': evento.id}) }}"><i class="bi bi-search"></i></a>
-                    <a href="{{ path('evento_edit', {'id': evento.id}) }}"><i class="bi bi-pencil"></i></a>
-                </td>
-            </tr>#}
         {% else %}
             <div class="lead">No hay eventos en la semana</div>
-          {#  <tr>
-                <td colspan="11">no records found</td>
-            </tr>#}
         {% endfor %}
-         {#   </tbody>
-        </table>#}
-
-    {#    <a class="btn btn-primary" href="{{ path('evento_new') }}"><i class="bi bi-plus-circle"></i> Nuevo</a>#}
     </div>
 
 {% endblock %}

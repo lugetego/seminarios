@@ -146,5 +146,6 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="select2" level="application" />
     <orderEntry type="library" name="twitter-bootstrap" level="application" />
+    <orderEntry type="library" name="dataTables.bootstrap5" level="application" />
   </component>
 </module>
