@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nuevo usuario{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        {{ form_start(form) }}
+        <h3 class="mb-3">Nuevo usuario</h3>
+        <div class="row">
+            <div class="col-4">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.username,{
+                        'attr': {'class': 'form-control', 'placeholder':'Username',
+                        } } ) }}
+                    <label for="username">{{ form_label(form.username) }}</label>
+                    <div>{{ form_errors(form.username) }}</div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.email,{
+                        'attr': {'class': 'form-control', 'placeholder':'Email',
+                        } } ) }}
+                    <label for="email">{{ form_label(form.email) }}</label>
+                    <div>{{ form_errors(form.email) }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {{ form_start(form) }}
+            <div class="col-4">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.password.first,{
+                        'attr': {'class': 'form-control', 'placeholder':'Password',
+                        } } ) }}
+                    <label for="password1">{{ form_label(form.password.first) }}</label>
+                    <div>{{ form_errors(form.password.first) }}</div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.password.second,{
+                        'attr': {'class': 'form-control', 'placeholder':'Confirm password',
+                        } } ) }}
+                    <label for="password2">{{ form_label(form.password.second) }}</label>
+                    <div>{{ form_errors(form.password.second) }}</div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary">{{ button_label|default('Nuevo') }}</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
