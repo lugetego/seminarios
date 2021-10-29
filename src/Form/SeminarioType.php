@@ -31,6 +31,8 @@ class SeminarioType extends AbstractType
                 'label' => 'Activo'
             ])
             ->add('responsables')
+            ->add('descripcion',null,[
+                'label'=> 'Descripción'])
         ;
     }
 

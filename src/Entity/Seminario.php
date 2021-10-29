@@ -50,6 +50,11 @@ class Seminario
     private $estatus;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descripcion;
+
+    /**
      * @ORM\Column(type="string", length=255, unique=true, nullable=true)
      * @Gedmo\Slug(fields={"nombre"})
      */
@@ -272,4 +277,21 @@ class Seminario
             $listaCorreos = substr($listaCorreos, 0, -2);
         return $listaCorreos;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * @param mixed $descripcion
+     */
+    public function setDescripcion($descripcion): void
+    {
+        $this->descripcion = $descripcion;
+    }
+
 }
