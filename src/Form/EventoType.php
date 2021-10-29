@@ -17,7 +17,7 @@ class EventoType extends AbstractType
         $builder
             ->add('lugar')
             ->add('emails',null, array(
-                'label'=>'Correos',
+                'label'=>'Correo responsables',
             ))
 
             ->add('seminario',null, [
@@ -42,9 +42,11 @@ class EventoType extends AbstractType
                 ],
             ))
             ->add('ponente')
-            ->add('origen')
+            ->add('origen',null, array(
+                'label'=>'Institución de origen',
+            ))
             ->add('platica',null, array(
-                'label'=>'Plática',
+                'label'=>'Titulo',
                 ))
             ->add('resumen')
             ->add('comentario')

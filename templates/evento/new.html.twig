@@ -14,12 +14,16 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ path('evento_index') }}">Eventos</a></li>
-                <li class="breadcrumb-item active" aria-current="page"> {{  evento.slug }} </li>
+                <li class="breadcrumb-item active" aria-current="page"> Nuevo </li>
             </ol>
         </nav>
-        <h3 class="my-4">Registro</h3>
+{#        <h3 class="my-4">Nuevo Evento</h3>#}
 
-        {{ include('evento/_form.html.twig') }}
+        <div class="row justify-content-md-center">
+            <div class="col-6">
+                {{ include('evento/_form.html.twig') }}
+            </div>
+        </div>
 
     </div>
 {% endblock %}
@@ -42,27 +46,17 @@
                        method: 'GET',
                        success: function (json) {
                            // let s = JSON.parse('{"name":"John", "age":30, "city":"New York"}');
-
-                           console.log(json.lugar, json.correosStr, json.responsablesStr);
-                           console.dir(json.hora);
+                           //console.log(json.lugar, json.correosStr, json.responsablesStr);
+                           //console.dir(json.hora);
 
                            // hora: "1970-01-01T13:00:00+00:00"  no GTM INFO
                            let d = new Date(json.hora);
-                           let timectl = $(".js-evento-hora");
 
                           // var utcDate = tDate.toUTCString();
-                           console.log(d.getUTCHours(), d.getUTCMinutes());
-                           console.dir(timectl);
-
-                           // $('.js-evento-lugar').val(s.city);
                            $('.js-evento-lugar').val(json.lugar);
-
-                           // Busca el select de la hora y minuto
-                           // id="evento_hora_hour"
-                           // id="evento_hora_minute"
-
-                           document.getElementById("evento_hora_hour").value = d.getUTCHours();
-                           document.getElementById("evento_hora_minute").value = d.getUTCMinutes();
+                           $('.js-evento-hora').val(json.hora.substring(11, 16))
+                           $('.js-evento-responsables').html(json.responsablesStr);
+                           $('.js-evento-correos').val(json.correosStr);
 
                        },
                        statusCode: {
@@ -76,6 +70,9 @@
                    // Clear fields responsables, hora
                    console.log('No data');
                    $('.js-evento-lugar').val('');
+                   $('.js-evento-hora').val('');
+                   $('.js-evento-responsables').innerHTML('');
+                   $('.js-evento-correos').val('');
                }
                // console.log(`Selected ${event.target.value}`);
            });

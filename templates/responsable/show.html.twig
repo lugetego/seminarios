@@ -3,10 +3,18 @@
 {% block title %}Responsable{% endblock %}
 
 {% block body %}
-    <h1>Responsable</h1>
+    <div class="container">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('responsable_index') }}">Responsables</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ responsable.slug }}</li>
+            </ol>
+        </nav>
+        <h3 class="d-inline">{{ responsable.nombre }} {{ responsable.apellidos }} <span class="small text-secondary">{{ responsable.email }}</span></h3> <a class="d-inline" href="{{ path('responsable_edit', {'id': responsable.id}) }}"><i class="bi bi-pencil-square"></i></a>
+        <h4>{{ responsable.institucion }}</h4>
 
-    <table class="table">
-        <tbody>
+     {#   <table class="table">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ responsable.id }}</td>
@@ -27,12 +35,18 @@
                 <th>Institucion</th>
                 <td>{{ responsable.institucion }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>#}
+        <ul class="list-group my-4">
+            {% for seminario in responsable.seminarios %}
+                <li class="list-group-item"><a href="{{ path('seminario_show', {'id': seminario.id}) }}">{{ seminario.nombre }}</li>
+            {% endfor %}
+        </ul>
 
-    <a href="{{ path('responsable_index') }}">back to list</a>
 
-    <a href="{{ path('responsable_edit', {'id': responsable.id}) }}">edit</a>
 
-    {{ include('responsable/_delete_form.html.twig') }}
+
+        {{ include('responsable/_delete_form.html.twig') }}
+
+    </div>
 {% endblock %}

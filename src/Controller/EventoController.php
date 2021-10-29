@@ -16,12 +16,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class EventoController extends AbstractController
 {
     /**
-     * @Route("/", name="evento_index", methods={"GET"})
+     * @Route("/{year}", name="evento_index", methods={"GET"}, requirements={"year"="\d+"})
      */
-    public function index(EventoRepository $eventoRepository): Response
+    public function index(EventoRepository $eventoRepository, $year = '2021'): Response
     {
+        $eventos = $eventoRepository->findAllbyYear($year);
+
         return $this->render('evento/index.html.twig', [
-            'eventos' => $eventoRepository->findAll(),
+            //'eventos' => $eventoRepository->findAll(),
+            'eventos' => $eventos,
         ]);
     }
 

@@ -40,6 +40,10 @@ body {
 .seminar-info {
     /*padding-left: 50px;*/
 }
+
+.seminar-container {
+    margin-top: 60px;
+}
 .seminario-hora {
     padding-left: 6px;
 }
@@ -60,6 +64,10 @@ body {
 
 .day {
     font-size: 1.6em;
+}
+
+.year {
+    font-size: .8em;
 }
 
 .abstract {

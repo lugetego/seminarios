@@ -20,6 +20,7 @@
                     <div class="date-container d-row">
                         <span class="month d-block d-flex justify-content-center"> {{ evento.fecha|localizeddate('none', 'none', 'es-MX', null, "MMM")|trim('.') }}</span>
                         <span class="day d-flex justify-content-center">{{ evento.fecha|date('d') }}</span>
+                        <span class="year  d-flex justify-content-center">{{ evento.fecha|date('Y') }}</span>
                     </div>
                     <div class="seminar-info d-row ps-5">
                         <h3 class="seminar-title"><a href="{{ path('evento_show', {'slug': evento.slug}) }}">{{ evento.platica }}</a></h3>

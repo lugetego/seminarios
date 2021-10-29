@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\EventoRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EventoRepository::class)
@@ -21,41 +22,49 @@ class Evento
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $lugar;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $responsables;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank
      */
     private $emails;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank
      */
     private $fecha;
 
     /**
      * @ORM\Column(type="time")
+     * @Assert\NotBlank
      */
     private $hora;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $ponente;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $origen;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $platica;
 

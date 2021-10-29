@@ -8,11 +8,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ApiResource(
  *     collectionOperations={"get", "post"},
- *     itemOperations={"get"}
+ *     itemOperations={"get"},
+ *     attributes={"enable_max_depth"="true"},
  *     )
  * @ORM\Entity(repositoryClass=SeminarioRepository::class)
  * @ORM\HasLifecycleCallbacks
@@ -56,6 +58,7 @@ class Seminario
     /**
      * @ORM\ManyToMany(targetEntity=Responsable::class, inversedBy="seminarios")
      * @ORM\JoinTable(name="seminario_responsable")
+     * @MaxDepth(1)
      */
     private $responsables;
 
