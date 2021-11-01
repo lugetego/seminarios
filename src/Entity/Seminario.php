@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
@@ -15,6 +16,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *     collectionOperations={"get", "post"},
  *     itemOperations={"get"},
  *     attributes={"enable_max_depth"="true"},
+ *     normalizationContext={"groups"={"api:read"}},
  *     )
  * @ORM\Entity(repositoryClass=SeminarioRepository::class)
  * @ORM\HasLifecycleCallbacks
@@ -31,16 +33,19 @@ class Seminario
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"api:read"})
      */
     private $nombre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"api:read"})
      */
     private $lugar;
 
     /**
      * @ORM\Column(type="time")
+     * @Groups({"api:read"})
      */
     private $hora;
 
@@ -241,7 +246,7 @@ class Seminario
 
     /**
      * Get responsablesStr
-     *
+     * @Groups(["api:read"])
      * @return string
      */
     public function getResponsablesStr()
@@ -258,7 +263,7 @@ class Seminario
 
     /**
      * Get correosStr
-     *
+     * @Groups(["api:read"])
      * @return string
      */
     public function getCorreosStr()
