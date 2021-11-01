@@ -1,44 +1,38 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Responsable index{% endblock %}
+{% block title %}Usuarios{% endblock %}
  {% block stylesheets %}
      {{ parent() }}
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
      <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
  {% endblock %}
 {% block body %}
-
     <div class="container">
         <div class="row">
             <div class="col">
-                <h3>Responsables </h3>
+                <h3>Usuarios</h3>
             </div>
             <div class="col">
-                <p class="text-end"><a class="btn btn-primary" href="{{ path('responsable_new') }}"><i class="bi bi-plus-circle"></i> Nuevo</a></p>
+                <p class="text-end"><a class="btn btn-primary" href="{{ path('registration') }}"><i class="bi bi-plus-circle"></i> Nuevo</a></p>
             </div>
         </div>
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Nombre</th>
-                <th>Apellidos</th>
+                <th>Username</th>
                 <th>Email</th>
-                <th>Institución</th>
-                <th>actions</th>
+                <th>Roles</th>
             </tr>
             </thead>
             <tbody>
-            {% for responsable in responsables %}
+            {% for user in users %}
                 <tr>
-                    <td>{{ responsable.slug }}</td>
-                    <td>{{ responsable.nombre }}</td>
-                    <td>{{ responsable.apellidos }}</td>
-                    <td>{{ responsable.email }}</td>
-                    <td>{{ responsable.institucion }}</td>
-                    <td>
-                        <a href="{{ path('responsable_show', {'id': responsable.id}) }}"><i class="bi bi-search"></i></a>
-                        <a href="{{ path('responsable_edit', {'id': responsable.id}) }}"><i class="bi bi-pencil"></i></a>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{% for role in user.roles %}
+                            {{ role }}
+                        {% endfor %}
                     </td>
                 </tr>
             {% else %}
@@ -48,7 +42,6 @@
             {% endfor %}
             </tbody>
         </table>
-
     </div>
 {% endblock %}
 {% block javascripts %}

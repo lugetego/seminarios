@@ -18,6 +18,10 @@
                 <p class="card-text">
                     {{ seminario.lugar }}, {{ seminario.hora ? seminario.hora|date('H:i') : '' }}
                 </p>
+                <p class="card-text m-1">
+                    {{ seminario.descripcion }}
+                </p>
+
                 {% for responsable in seminario.responsables %}
                     <i class="bi bi-person-square"></i> <a href="{{ path('responsable_show', { 'id': responsable.id }) }}">{{ responsable.nombre }} {{ responsable.apellidos }}</a></br>
                 {% endfor %}

@@ -27,6 +27,26 @@
                 {#    <a class="me-3 py-2 text-dark text-decoration-none" href="#">Inicio</a>#}
                     <a class="me-3 py-2 text-dark text-decoration-none" href="{{ path('seminario_index') }}">Seminarios</a>
                     <a class="me-3 py-2 text-dark text-decoration-none" href="{{ path('evento_index') }}">Eventos</a>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                Sesión iniciada
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Correo</a></li>
+                                <li><a class="dropdown-item" href={{ path('seminario_index') }}#">Seminarios</a></li>
+                                <li><a class="dropdown-item" href="{{ path('responsable_index') }}">Responsables</a></li>
+                                <li><a class="dropdown-item" href="{{ path('user_index') }}">Usuarios</a></li>
+                                <li><a class="dropdown-item" href="{{ path('app_logout') }}">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+
+                    {% else %}
+                        <a class="me-3 py-2 text-dark text-decoration-none" href="{{ path('app_login') }}">Iniciar sesión</a>
+                    {% endif %}
+
+
 {#                    <a class="me-3 py-2 text-dark text-decoration-none" href="{{ path('responsable_index') }}"><i class="bi bi-person-lines-fill"></i> Responsables</a>#}
                 </nav>
             </div>

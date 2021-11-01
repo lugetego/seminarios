@@ -9,14 +9,12 @@
 
 {% block body %}
     <div class="container">
-
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ path('seminario_index') }}">Seminarios</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Nuevo</li>
             </ol>
         </nav>
-
         <h3 class="mb-3">Datos de seminario</h3>
         {{ include('seminario/_form.html.twig') }}
     </div>
