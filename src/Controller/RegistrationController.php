@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Repository\UserRepository;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class RegistrationController extends AbstractController
 {
@@ -23,7 +25,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/registration", name="registration")
      */
-    public function index(Request $request)
+    public function index(MailerInterface $mailer, Request $request)
     {
         $user = new User();
 
@@ -42,6 +44,21 @@ class RegistrationController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
+            $email = (new Email())
+                ->from('gerardo@matmor.unam.mx')
+                ->to($user->getEmail())
+                //->cc('cc@example.com')
+                //->bcc('bcc@example.com')
+                //->replyTo('fabien@example.com')
+                //->priority(Email::PRIORITY_HIGH)
+                ->subject('Nuevo usuario en Seminarios')
+                ->text('Se ha registrado un nuevo usuario en Seminarios')
+                ->html('<p>Se ha registrado un nuevo usuario en Seminarios</p>');
+
+
+
+            $mailer->send($email);
 
             return $this->redirectToRoute('app_login');
         }
