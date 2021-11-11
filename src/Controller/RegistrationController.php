@@ -23,7 +23,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/registration", name="registration")
      */
-    public function index(Request $request)
+    public function index(\Swift_Mailer $mailer, Request $request)
     {
         $user = new User();
 
@@ -43,7 +43,20 @@ class RegistrationController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('app_login');
+           // Mail
+            $message = (new \Swift_Message('Alta de usuario'))
+                ->setFrom('webmaster@matmor.unam.mx')
+                ->setTo(array($user->getEmail() ))
+                //->setTo('gerardo@matmor.unam.mx')
+                ->setBcc(array('gerardo@matmor.unam.mx'))
+                ->setBody($this->renderView('emails/registration.txt.twig', array('user' => $user)));
+
+            ;
+            $mailer->send($message);
+
+            //return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('user_index');
+
         }
 
         return $this->render('registration/index.html.twig', [
