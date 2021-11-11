@@ -14,9 +14,10 @@ swiftmailer:
     encryption: tls
     port: 465
     auth-mode: login
-    stream_options:
-        ssl:
-            verify_peer: false
-            verify_peer_name: false
-            allow_self_signed: true
+#    stream_options:
+#        ssl:
+#            verify_peer: false
+#            verify_peer_name: false
+#            allow_self_signed: true
+    disable_delivery: true
 

@@ -31,7 +31,7 @@ class EventoController extends AbstractController
     /**
      * @Route("/new", name="evento_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(\Swift_Mailer $mailer, Request $request): Response
     {
         $evento = new Evento();
         $form = $this->createForm(EventoType::class, $evento);
@@ -42,6 +42,17 @@ class EventoController extends AbstractController
             $evento->setResponsables($evento->getSeminario()->getResponsablesStr());
             $entityManager->persist($evento);
             $entityManager->flush();
+
+            // Mail
+           /* $message = (new \Swift_Message('Alta de evento'))
+                ->setFrom('webmaster@matmor.unam.mx')
+                ->setTo(array($evento->getEmails() ))
+                //->setTo('gerardo@matmor.unam.mx')
+                ->setBcc(array('gerardo@matmor.unam.mx'))
+                ->setBody($this->renderView('emails/evento.txt.twig', array('evento' => $evento)));
+
+            ;
+            $mailer->send($message);*/
 
             return $this->redirectToRoute('evento_index', [], Response::HTTP_SEE_OTHER);
         }
