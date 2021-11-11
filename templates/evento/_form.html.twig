@@ -1,119 +1,115 @@
-{{ form_start(form) }}
-<div class="form-row">
-
-    <p class="mt-2 lead">Información del evento</p>
-    <div class="row">
-        <div class="col-12">
-            <div class="form-floating mb-3">
-                {{ form_widget(form.seminario,{
-                    'attr': {'class': 'form-control js-evento-seminario', 'placeholder':'Seminario',
-                    } } ) }}
-                <label for="seminario">{{ form_label(form.seminario) }}</label>
-                <div>{{ form_errors(form.seminario) }}</div>
+<div class="form-container mb-5">
+    {{ form_start(form) }}
+    <div class="form-row">
+        <p class="mt-2 lead">Información del evento</p>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.seminario,{
+                        'attr': {'class': 'form-control js-evento-seminario', 'placeholder':'Seminario',
+                        } } ) }}
+                    <label for="seminario">{{ form_label(form.seminario) }}</label>
+                    <div>{{ form_errors(form.seminario) }}</div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.lugar,{
+                        'attr': {'class': 'form-control js-evento-lugar', 'placeholder':'Lugar',
+                        } } ) }}
+                    <label for="Lugar">{{ form_label(form.lugar) }}</label>
+                    <div>{{ form_errors(form.lugar) }}</div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="form-floating mb-4">
+                    {{ form_widget(form.fecha,{
+                        'attr': {'class': 'form-control js-evento-fecha',
+                        } } ) }}
+                    <div>{{ form_errors(form.fecha) }}</div>
+                    <label for="Fecha">{{ form_label(form.fecha) }}</label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row mb-1">
+                    <label for="Hora">{{ form_label(form.hora) }}</label>
+                    {{ form_widget(form.hora,{
+                        'attr': {'class': 'js-evento-hora',
+                        } } ) }}
+                    <div>{{ form_errors(form.hora) }}</div>
+                </div>
             </div>
         </div>
-
-        <div class="col-12">
-            <div class="form-floating mb-3">
-                {{ form_widget(form.lugar,{
-                    'attr': {'class': 'form-control js-evento-lugar', 'placeholder':'Lugar',
-                    } } ) }}
-                <label for="Lugar">{{ form_label(form.lugar) }}</label>
-                <div>{{ form_errors(form.lugar) }}</div>
-            </div>
+        <div class="row">
+            <div class="row-12">
+                <div class="my-3">Responsable(s): <strong></strong><span class="js-evento-responsables"></span></div></div>
         </div>
-        <div class="col-5">
-            <div class="form-floating mb-4">
-                {{ form_widget(form.fecha,{
-                    'attr': {'class': 'form-control js-evento-fecha',
-                    } } ) }}
-                <div>{{ form_errors(form.fecha) }}</div>
-                <label for="Fecha">{{ form_label(form.fecha) }}</label>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="row mb-1">
-                <label for="Hora">{{ form_label(form.hora) }}</label>
-                {{ form_widget(form.hora,{
-                    'attr': {'class': 'js-evento-hora',
-                    } } ) }}
-                <div>{{ form_errors(form.hora) }}</div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="row-12">
-            <div class="my-3">Responsable(s): <span class="js-evento-responsables"></span></div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
-            <div class="form-floating mb-3">
-                {{ form_widget(form.emails,{
+        <div class="row">
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.emails,{
                         'attr': {'class': 'form-control js-evento-correos', 'placeholder':'Correos Responsables',
                         } }) }}
-                <label for="Lugar">{{ form_label(form.emails) }}</label>
-                <div>{{ form_errors(form.emails) }}</div>
+                    <label for="Lugar">{{ form_label(form.emails) }}</label>
+                    <div>{{ form_errors(form.emails) }}</div>
+                </div>
             </div>
         </div>
-    </div>
-    <p class="mt-5 lead">Información del ponente</p>
+        <p class="mt-5 lead">Información del ponente</p>
 
-    <div class="row">
-        <div class="col-12">
-            <div class="form-floating mb-3">
-                {{ form_widget(form.ponente,{
-                    'attr': {'class': 'form-control',
-                    } } ) }}
-                <label for="Ponente">{{ form_label(form.ponente) }}</label>
-                <div>{{ form_errors(form.ponente) }}</div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.ponente,{
+                        'attr': {'class': 'form-control',
+                        } } ) }}
+                    <label for="Ponente">{{ form_label(form.ponente) }}</label>
+                    <div>{{ form_errors(form.ponente) }}</div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.origen,{
+                        'attr': {'class': 'form-control',
+                        } } ) }}
+                    <label for="Lugar">{{ form_label(form.origen) }}</label>
+                    <div>{{ form_errors(form.origen) }}</div>
+                </div>
             </div>
         </div>
-        <div class="col-12">
-            <div class="form-floating mb-3">
-                {{ form_widget(form.origen,{
-                    'attr': {'class': 'form-control',
-                    } } ) }}
-                <label for="Lugar">{{ form_label(form.origen) }}</label>
-                <div>{{ form_errors(form.origen) }}</div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.platica,{
+                        'attr': {'class': 'form-control',
+                        } } ) }}
+                    <label for="Título">{{ form_label(form.platica) }}</label>
+                    <div>{{ form_errors(form.platica) }}</div>
+                </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.resumen,{
+                        'attr': {'class': 'form-control', 'rows':'8', 'style':'height:100%'
+                        } } ) }}
+                    <label for="Resumen">{{ form_label(form.resumen) }}</label>
+                    <div>{{ form_errors(form.resumen) }}</div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.comentario,{
+                        'attr': {'class': 'form-control',
+                        } } ) }}
+                    <label for="Comentario">{{ form_label(form.comentario) }}</label>
+                    <div>{{ form_errors(form.comentario) }}</div>
+                </div>
+            </div>
+        </div>
+        {{ form_widget(form) }}
+        <button class="btn btn-primary mb-2">{{ button_label|default('Guardar') }}</button>
+        {{ form_end(form) }}
     </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="form-floating mb-3">
-                {{ form_widget(form.platica,{
-                    'attr': {'class': 'form-control',
-                    } } ) }}
-                <label for="Título">{{ form_label(form.platica) }}</label>
-                <div>{{ form_errors(form.platica) }}</div>
-            </div>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="form-floating mb-3">
-                {{ form_widget(form.resumen,{
-                    'attr': {'class': 'form-control', 'rows':'8', 'style':'height:100%'
-                    } } ) }}
-                <label for="Resumen">{{ form_label(form.resumen) }}</label>
-                <div>{{ form_errors(form.resumen) }}</div>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-floating mb-3">
-                {{ form_widget(form.comentario,{
-                    'attr': {'class': 'form-control',
-                    } } ) }}
-                <label for="Comentario">{{ form_label(form.comentario) }}</label>
-                <div>{{ form_errors(form.comentario) }}</div>
-            </div>
-        </div>
-    </div>
-
 </div>
-{{ form_widget(form) }}
-<button class="btn btn-primary mb-5">{{ button_label|default('Guardar') }}</button>
-{{ form_end(form) }}

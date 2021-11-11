@@ -3,11 +3,14 @@
 namespace App\Form;
 
 use App\Entity\Evento;
+use App\Entity\Seminario;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Doctrine\ORM\EntityRepository;
 
 
 class EventoType extends AbstractType
@@ -20,8 +23,13 @@ class EventoType extends AbstractType
                 'label'=>'Correo responsables',
             ))
 
-            ->add('seminario',null, [
-                'placeholder' => 'Seleccionar',
+            ->add('seminario',EntityType::class, [
+                'class' => Seminario::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('s')
+                        ->orderBy('s.nombre', 'ASC');
+                },
+                'placeholder' => 'Seleccionar evento',
             ])
             ->add('fecha',DateType::class, array(
                 'required' => true,

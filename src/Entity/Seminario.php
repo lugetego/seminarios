@@ -251,7 +251,7 @@ class Seminario
 
     /**
      * Get responsablesStr
-     * @Groups(["api:read"])
+     * @Groups({"api:read"})
      * @return string
      */
     public function getResponsablesStr()
@@ -268,14 +268,14 @@ class Seminario
 
     /**
      * Get correosStr
-     * @Groups(["api:read"])
+     * @Groups({"api:read"})
      * @return string
      */
     public function getCorreosStr()
     {
         $listaCorreos= "";
         foreach($this->responsables as $resp){
-            $listaCorreos .= $resp->getEmail() . ' ,';
+            $listaCorreos .= $resp->getEmail() . ', ';
         }
         // Borra la última coma
         if(strlen($listaCorreos))

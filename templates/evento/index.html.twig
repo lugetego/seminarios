@@ -7,11 +7,15 @@
      <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
 {% endblock %}
 {% block body %}
+
+    <div class="seminar-banner">
+        <div class="container">
+            <h2><strong>Coloquio y Seminarios</strong><br>Centro de Ciencias Matemáticas</h2>
+        </div>
+    </div>
     <div class="container">
 
-        <h2 class="mb-5"><strong>Coloquio y Seminarios</strong><br>Centro de Ciencias Matemáticas</h2>
-
-        <h4 class="mb-5">Eventos de la Semana</h4>
+        <h4 class="my-5">Eventos de la Semana</h4>
 
         {% for evento in eventos %}
             <div class="seminar-container">

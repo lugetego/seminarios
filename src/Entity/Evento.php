@@ -97,6 +97,7 @@ class Evento
     /**
      * @ORM\ManyToOne(targetEntity=Seminario::class)
      * @ORM\JoinColumn(name="seminario_id", referencedColumnName="id")
+     * @ORM\OrderBy({"nombre" = "ASC"})
      */
     private $seminario;
 
