@@ -37,6 +37,24 @@ class EventoRepository extends ServiceEntityRepository
     }
     */
 
+    /**
+    * @return Evento[] Returns an array of Evento objects
+    */
+    public function findByWeek()
+    {
+        $lunes= date('Y/m/d',strtotime('Monday this week'));
+        $viernes= date('Y/m/d',strtotime('Friday this week'));
+
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.fecha BETWEEN :lunes AND :viernes')
+            ->setParameter('lunes', $lunes)
+            ->setParameter('viernes', $viernes)
+            ->orderBy('e.fecha', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     public function findAllbyYear($year)
     {
         $beginDate = new DateTimeImmutable($year.'-01-01');
@@ -52,14 +70,6 @@ class EventoRepository extends ServiceEntityRepository
             ->getResult()
             ;
 
-
-
-
-
-        $em = $this->getEntityManager();
-        $dql = 'SELECT e FROM Evento e ORDER BY e.fecha DESC';
-        $consulta = $em->createQuery($dql);
-        return $consulta->getResult();
     }
 
    /* public function findEventosAnteriores($seminario)

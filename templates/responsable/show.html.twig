@@ -39,7 +39,7 @@
         </table>#}
         <ul class="list-group my-4">
             {% for seminario in responsable.seminarios %}
-                <li class="list-group-item"><a href="{{ path('seminario_show', {'id': seminario.id}) }}">{{ seminario.nombre }}</li>
+                <li class="list-group-item"><a href="{{ path('seminario_show', {'slug': seminario.slug}) }}">{{ seminario.nombre }}</li>
             {% endfor %}
         </ul>
 

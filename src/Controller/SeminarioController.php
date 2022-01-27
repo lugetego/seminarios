@@ -49,7 +49,7 @@ class SeminarioController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="seminario_show", methods={"GET"})
+     * @Route("/{slug}", name="seminario_show", methods={"GET"})
      */
     public function show(Seminario $seminario): Response
     {
@@ -59,7 +59,7 @@ class SeminarioController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="seminario_edit", methods={"GET","POST"})
+     * @Route("/{slug}/edit", name="seminario_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Seminario $seminario): Response
     {

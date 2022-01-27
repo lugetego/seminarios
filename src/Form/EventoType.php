@@ -19,6 +19,9 @@ class EventoType extends AbstractType
     {
         $builder
             ->add('lugar')
+            ->add('responsables', null, array(
+                'disabled' => true
+            ))
             ->add('emails',null, array(
                 'label'=>'Correo responsables',
             ))

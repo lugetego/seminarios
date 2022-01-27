@@ -19,29 +19,38 @@
             </div>
         </div>
 
+{#        {% for seminario in seminarios %}
+            <div class="my-5">
+                <p><a href="{{ path('seminario_show', {'slug': seminario.slug}) }}">{{ seminario.nombre }}</a></p>
+                <p>{{ seminario.responsablesStr }}</p>
+                <p>{{ seminario.lugar }} | {{ seminario.hora ? seminario.hora|date('H:i') : '' }}</p>
+            </div>
+        {% endfor %}#}
+
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
             <tr>
                 <th>Seminario</th>
-                <th>Nombre</th>
+               {# <th>Nombre</th>
                 <th>Lugar</th>
                 <th>Hora</th>
                 <th>Estatus</th>
-                <th>actions</th>
+                <th>actions</th>#}
             </tr>
             </thead>
             <tbody>
             {% for seminario in seminarios %}
                 <tr>
-                    <td>{{ seminario.slug }}</td>
-                    <td>{{ seminario.nombre }}</td>
-                    <td>{{ seminario.lugar }}</td>
-                    <td>{{ seminario.hora ? seminario.hora|date('H:i') : '' }}</td>
-                    <td>{{ seminario.estatus ? 'Activo' : 'Inactivo' }}</td>
-                    <td>
-                        <a href="{{ path('seminario_show', {'id': seminario.id}) }}"> <i class="bi bi-search"></i></a>
-                        <a href="{{ path('seminario_edit', {'id': seminario.id}) }}"> <i class="bi bi-pencil"></i></a>
+                    <td><span class="small"><a href="{{ path('seminario_show', {'slug': seminario.slug}) }}">{{ seminario.nombre }}</a></span><br>
+                       {#<span class="small"> {{ seminario.lugar }} | {{ seminario.hora ? seminario.hora|date('H:i') : '' }} horas</span>#}
                     </td>
+                 {#   <td>{{ seminario.lugar }}</td>
+                    <td>{{ seminario.hora ? seminario.hora|date('H:i') : '' }}</td>
+                    <td>{{ seminario.estatus ? 'Activo' : 'Inactivo' }}</td>#}
+{#                    <td>
+                        <a href="{{ path('seminario_show', {'slug': seminario.slug}) }}"> <i class="bi bi-search"></i></a>
+                        <a href="{{ path('seminario_edit', {'slug': seminario.slug}) }}"> <i class="bi bi-pencil"></i></a>
+                    </td>#}
                 </tr>
             {% else %}
                 <tr>

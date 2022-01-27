@@ -8,14 +8,15 @@
 {% endblock %}
 {% block body %}
 
-    <div class="seminar-banner">
+    {#<div class="seminar-banner">
         <div class="container">
             <h2><strong>Coloquio y Seminarios</strong><br>Centro de Ciencias Matemáticas</h2>
         </div>
-    </div>
+    </div>#}
     <div class="container">
 
-        <h4 class="my-5">Eventos de la Semana</h4>
+        <h4 class="mt-5">Eventos de la Semana</h4>
+        Del {{ "this week"|localizeddate('none', 'none', 'es-MX', null, "d 'de' MMMM") }} al {{ "this week"|date_modify("+4 day")|localizeddate('none', 'none', 'es-MX', null, "d 'de' MMMM y") }}
 
         {% for evento in eventos %}
             <div class="seminar-container">
@@ -37,7 +38,16 @@
             </div>
         {% else %}
             <div class="lead">No hay eventos en la semana</div>
+
+            <div class="text-center">
+                <img src="{{ asset('img/walking_outside.png') }}" alt="Tow" width="700px">
+            </div>
+
         {% endfor %}
+
+        <section id="footer">
+
+        </section>
     </div>
 
 {% endblock %}

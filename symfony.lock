@@ -266,6 +266,9 @@
             "config/packages/stof_doctrine_extensions.yaml"
         ]
     },
+    "swiftmailer/swiftmailer": {
+        "version": "v6.3.0"
+    },
     "symfony/asset": {
         "version": "v4.4.27"
     },
@@ -399,18 +402,6 @@
     "symfony/intl": {
         "version": "v4.4.31"
     },
-    "symfony/mailer": {
-        "version": "4.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.3",
-            "ref": "bbfc7e27257d3a3f12a6fb0a42540a42d9623a37"
-        },
-        "files": [
-            "config/packages/mailer.yaml"
-        ]
-    },
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
@@ -541,6 +532,20 @@
     },
     "symfony/stopwatch": {
         "version": "v4.4.27"
+    },
+    "symfony/swiftmailer-bundle": {
+        "version": "3.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.5",
+            "ref": "f0b2fccdca2dfd97dc2fd5ad216d5e27c4f895ac"
+        },
+        "files": [
+            "./config/packages/test/swiftmailer.yaml",
+            "./config/packages/swiftmailer.yaml",
+            "./config/packages/dev/swiftmailer.yaml"
+        ]
     },
     "symfony/translation": {
         "version": "3.3",

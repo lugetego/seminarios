@@ -18,9 +18,25 @@ class EventoController extends AbstractController
     /**
      * @Route("/{year}", name="evento_index", methods={"GET"}, requirements={"year"="\d+"})
      */
-    public function index(EventoRepository $eventoRepository, $year = '2021'): Response
+    public function index(EventoRepository $eventoRepository, $year = ''): Response
     {
+
+        if($year == '')
+                $year = date("Y");
         $eventos = $eventoRepository->findAllbyYear($year);
+
+        return $this->render('evento/index.html.twig', [
+            //'eventos' => $eventoRepository->findAll(),
+            'eventos' => $eventos,
+        ]);
+    }
+
+    /**
+     * @Route("/semana", name="evento_semana", methods={"GET"})
+     */
+    public function semana(EventoRepository $eventoRepository): Response
+    {
+        $eventos = $eventoRepository->findByWeek();
 
         return $this->render('evento/index.html.twig', [
             //'eventos' => $eventoRepository->findAll(),
@@ -54,7 +70,9 @@ class EventoController extends AbstractController
             ;
             $mailer->send($message);*/
 
-            return $this->redirectToRoute('evento_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'El evento se agregó correctamente.');
+
+            return $this->redirectToRoute('evento_show', ['slug' => $evento->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('evento/new.html.twig', [
@@ -74,7 +92,7 @@ class EventoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="evento_edit", methods={"GET","POST"})
+     * @Route("/{slug}/edit", name="evento_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Evento $evento): Response
     {
@@ -85,7 +103,10 @@ class EventoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('evento_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'El evento se modificó correctamente.');
+
+            return $this->redirectToRoute('evento_show', ['slug' => $evento->getSlug()], Response::HTTP_SEE_OTHER);
+//            return $this->redirectToRoute('evento_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('evento/edit.html.twig', [
@@ -95,7 +116,7 @@ class EventoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="evento_delete", methods={"POST"})
+     * @Route("/{slug}", name="evento_delete", methods={"POST"})
      */
     public function delete(Request $request, Evento $evento): Response
     {

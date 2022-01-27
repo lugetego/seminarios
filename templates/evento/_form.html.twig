@@ -40,9 +40,20 @@
                 </div>
             </div>
         </div>
+{#        <div class="row">#}
+{#            <div class="row-12">#}
+{#                <div class="my-3">Responsable(s): <strong></strong><span class="js-evento-responsables"></span></div></div>#}
+{#        </div>#}
         <div class="row">
-            <div class="row-12">
-                <div class="my-3">Responsable(s): <strong></strong><span class="js-evento-responsables"></span></div></div>
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    {{ form_widget(form.responsables,{
+                        'attr': {'class': 'form-control js-evento-responsables', 'placeholder':'Correos Responsables',
+                        } }) }}
+                    <label for="Lugar">{{ form_label(form.responsables) }}</label>
+                    <div>{{ form_errors(form.responsables) }}</div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-12">
